@@ -6,13 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Repository\InscritRepository;
+use App\Repository\ProfilRepository;
 
 class AdminController extends AbstractController
 {
     /**
      *
-     * @var InscritRepository
+     * @var ProfilRepository
      */
     private $repository;
 
@@ -24,10 +24,10 @@ class AdminController extends AbstractController
 
     /**
      *
-     * @param InscritRepository $repository
+     * @param ProfilRepository $repository
      * @param EntityManagerInterface $om
      */
-    function __construct(InscritRepository $repository, EntityManagerInterface $om) {
+    function __construct(ProfilRepository $repository, EntityManagerInterface $om) {
         $this->repository = $repository;
         $this->om = $om;
     }

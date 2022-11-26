@@ -12,7 +12,7 @@
         <h2 class="fs-5">Liste de tous les inscrits :</h2>
 
         {% for inscrit in inscrits %}
-            {{ inscrit.prenom }} {{ inscrit.nom | upper }}
+            <p>{{ inscrit.prenom }} {{ inscrit.nom | upper }}</p>
         {% endfor %}
     </div>
 {% endblock %}

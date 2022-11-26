@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\InscritRepository;
+use App\Repository\ProfilRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: InscritRepository::class)]
-class Inscrit
+#[ORM\Entity(repositoryClass: ProfilRepository::class)]
+class Profil
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -28,6 +28,9 @@ class Inscrit
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $adr = null;
+
+    #[ORM\OneToOne(mappedBy: 'Profil', cascade: ['persist', 'remove'])]
+    private ?User $user = null;
 
     public function getId(): ?int
     {
@@ -90,6 +93,28 @@ class Inscrit
     public function setAdr(?string $adr): self
     {
         $this->adr = $adr;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($user === null && $this->user !== null) {
+            $this->user->setProfil(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($user !== null && $user->getProfil() !== $this) {
+            $user->setProfil($this);
+        }
+
+        $this->user = $user;
 
         return $this;
     }

@@ -29,6 +29,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
+    #[ORM\OneToOne(inversedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?Profil $Profil = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,5 +108,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function isAdmin(): bool {
         return in_array(self::ROLE_ADMIN, $this->getRoles());
+    }
+
+    public function getProfil(): ?Profil
+    {
+        return $this->Profil;
+    }
+
+    public function setProfil(?Profil $Profil): self
+    {
+        $this->Profil = $Profil;
+
+        return $this;
     }
 }
