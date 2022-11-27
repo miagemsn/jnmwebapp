@@ -54,11 +54,11 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
 
         # Si l'utilisateur est admin, redirection vers la page
         if($token->getUser()->isAdmin()){
-            return new RedirectResponse($this->urlGenerator->generate('admin.inscrits'));
+            return new RedirectResponse($this->urlGenerator->generate('admin.utilisateurs'));
         }
 
         # Sinon redirection vers la page d'accueil
-        return new RedirectResponse($this->urlGenerator->generate('app_user'));
+        return new RedirectResponse($this->urlGenerator->generate('profil'));
     }
 
     protected function getLoginUrl(Request $request): string

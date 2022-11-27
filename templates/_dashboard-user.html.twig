@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Welcome!{% endblock %}</title>
+  <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+  <link rel="stylesheet" href="{{ asset('node_modules/bootstrap/dist/css/bootstrap.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/base.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}">
+  {% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+  {% endblock %}
+
+  {% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+  {% endblock %}
+</head>
+
+<body>
+<div class="main-container d-flex">
+
+  <div class="sidebar" id="side_nav">
+    <div class="header-box mt-4 mb-4 text-center">
+      <img class="logo" src="{{ asset('assets/miage-logo.png') }}" alt="miage logo">
+    </div>
+    <ul class="list-unstyled px-2">
+      <li class="active"><a href="{{ path('profil') }}" class="text-decoration-none px-3 py-2 d-block"><i class="fa-solid fa-user"></i>   Mon compte</a></li>
+    </ul>
+    <hr class="h-color mx-2">
+    <ul class="list-unstyled px-2">
+      <li class=""><a href="{{ path('parametres') }}" class="text-decoration-none px-3 py-2 d-block"><i class="fa-solid fa-gear"></i>   Paramètres</a></li>
+    </ul>
+  </div>
+
+  <div class="content">
+    <div class="navbar justify-content-end px-4">
+      {% if app.user %}
+        <a class="btn">{{ app.user.userIdentifier }}</a>
+        <a class="btn btn-outline-metallic-seaweed" href="{{ path('app_logout')}}">Déconnexion</a>
+      {% endif %}
+    </div>
+    <div class="dashboard-content px-3 pt-4">
+
+      {% block body %} {% endblock body %}
+
+    </div>
+  </div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/9f0d7fbe5b.js" crossorigin="anonymous"></script>
+
+<script>
+    $(".sidebar ul li").on('click', function () {
+        $(".sidebar ul li.active").removeClass('active');
+        $(this).addClass('active');
+    })
+</script>
+</body>
+</html>
