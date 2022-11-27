@@ -118,4 +118,9 @@ class Profil
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return $this->nom;
+    }
 }

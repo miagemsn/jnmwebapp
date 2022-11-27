@@ -1,0 +1,23 @@
+section{
+  background-color: #217B8A;
+}
+.card{
+  border-radius: 1rem;
+}
+.img-fluid{
+  border-radius: 1rem 0 0 1rem;
+}
+.logo{
+  width: 35%;
+}
+h5{
+  letter-spacing: 1px;
+}
+.btn{
+  width: 100%;
+  background-color: #3B3B39;
+  letter-spacing: 1px;
+}
+.btn:hover{
+  background-color: #217B8A;
+}

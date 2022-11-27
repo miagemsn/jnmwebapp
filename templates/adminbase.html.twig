@@ -40,7 +40,10 @@
 
   <div class="content">
     <div class="bg-light d-flex flex-row-reverse">
-      <div class="p-2">Profil</div>
+      {% if app.user %}
+        <a class="btn btn-outline-dark" href="{{ path('app_logout')}}">Déconnexion</a>
+        <span class="btn text-center">{{ app.user.userIdentifier }}</span>
+      {% endif %}
     </div>
     <div class="dashboard-content px-3 pt-4">
       {% block body %} {% endblock %}
