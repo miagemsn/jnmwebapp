@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\ProfilRepository;
 
-class AdminController extends AbstractController
+class AdminProfilsController extends AbstractController
 {
     /**
      *
@@ -32,11 +32,11 @@ class AdminController extends AbstractController
         $this->om = $om;
     }
 
-    #[Route('/admin', name: 'admin')]
+    #[Route('/admin/utilisateurs', name: 'admin.utilisateurs')]
     public function index(): Response
     {
         $profils = $this->repository->findAll();
-        return $this->render('admin/admin.html.twig', [
+        return $this->render('admin/admin.utilisateurs.html.twig', [
             'controller_name' => 'AdminInscritController',
             'profils' => $profils,
         ]);

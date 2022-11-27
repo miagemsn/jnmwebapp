@@ -1,18 +1,21 @@
-{% extends 'adminbase.html.twig' %}
+{% extends '_base-admin.html.twig' %}
 
 {% block title %}Dashboard{% endblock %}
 
 {% block body %}
+
     <div>
         <h2 class="fs-5"> Dashboard ✅</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, totam? Sequi alias eveniet ut quas
             ullam delectus et quasi incidunt rem deserunt asperiores reiciendis assumenda doloremque provident,
             dolores aspernatur nequee.. </p>
 
-        <h2 class="fs-5">Liste de tous les inscrits :</h2>
-
-        {% for inscrit in inscrits %}
-            <p>{{ inscrit.prenom }} {{ inscrit.nom | upper }}</p>
-        {% endfor %}
+        <ul>
+            <li>Statistiques</li>
+            <li>Chiffres utilisateurs</li>
+            <li>Graphes</li>
+            <li>...</li>
+        </ul>
     </div>
-{% endblock %}
+
+{% endblock body %}

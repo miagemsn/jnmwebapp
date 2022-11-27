@@ -1,0 +1,29 @@
+{% extends '_base-admin.html.twig' %}
+
+{% block body %}
+
+    <div id="utilisateurs">
+        <h2 class="fs-5">Liste de tous les profils :</h2>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prénom</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for profil in profils %}
+                <tr>
+                    <th scope="row">{{ profil.id }}</th>
+                    <td>{{ profil.prenom }}</td>
+                    <td>{{ profil.nom | upper }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+{% endblock body %}

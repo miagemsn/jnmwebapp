@@ -1,7 +1,6 @@
 body {
   background: #f8f9fa;
   color: var(--onyx);
-  font-family: 'Rubik', sans-serif;
 }
 
 #side_nav {
@@ -45,7 +44,7 @@ hr.h-color {
 }
 .btn-outline-metallic-seaweed:hover {
   background-color: var(--metallic-seaweed);
-  color: var(--white);
+  color: white;
 
 }
 
