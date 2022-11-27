@@ -1,12 +1,20 @@
 body {
-  background: #eee;
+  background: #f8f9fa;
+  color: var(--onyx);
+  font-family: 'Rubik', sans-serif;
 }
 
 #side_nav {
-  background: #000;
+  background: var(--white);
   min-width: 250px;
   max-width: 250px;
   transition: all 0.3s;
+}
+.logo{
+  width: 180px;
+}
+.navbar{
+  background-color: var(--alice-blue);
 }
 
 .content {
@@ -19,16 +27,26 @@ hr.h-color {
 }
 
 .sidebar li.active {
-  background: #eee;
-  border-radius: 8px;
+  background: var(--metallic-seaweed);
+  border-radius: 4px;
 }
 
 .sidebar li.active a, .sidebar li.active a:hover {
-  color: #000;
+  color: var(--alice-blue);
 }
 
 .sidebar li a {
-  color: #fff;
+  color: var(--onyx);
+}
+
+.btn-outline-metallic-seaweed {
+  border-color: var(--metallic-seaweed);
+  color: var(--metallic-seaweed);
+}
+.btn-outline-metallic-seaweed:hover {
+  background-color: var(--metallic-seaweed);
+  color: var(--white);
+
 }
 
 @media (max-width: 767px) {
