@@ -2,6 +2,12 @@
 
 {% block body %}
 
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success mt-2 mb-2">
+            {{ message }}
+        </div>
+    {% endfor %}
+
     <div id="utilisateurs">
         <h2 class="fs-5">Liste de tous les profils :</h2>
 
@@ -19,6 +25,7 @@
                     <th scope="row">{{ profil.id }}</th>
                     <td>{{ profil.prenom }}</td>
                     <td>{{ profil.nom | upper }}</td>
+                    <td><a type="button" href="{{ path('admin.utilisateur.suppr', {id:profil.id}) }}" class="btn btn-outline-danger">Supprimer</a></td>
                 </tr>
             {% endfor %}
             </tbody>

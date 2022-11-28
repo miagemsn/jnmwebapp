@@ -37,7 +37,6 @@ class AdminController extends AbstractController
     {
         $profils = $this->repository->findAll();
         return $this->render('admin/admin.html.twig', [
-            'controller_name' => 'AdminInscritController',
             'profils' => $profils,
         ]);
     }

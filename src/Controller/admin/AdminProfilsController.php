@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\ProfilRepository;
+use App\Entity\Profil;
 
 class AdminProfilsController extends AbstractController
 {
@@ -37,8 +38,20 @@ class AdminProfilsController extends AbstractController
     {
         $profils = $this->repository->findAll();
         return $this->render('admin/admin.utilisateurs.html.twig', [
-            'controller_name' => 'AdminInscritController',
             'profils' => $profils,
         ]);
+    }
+
+    // TODO edit message succes
+    // 'Le profil NOM PRENOM a été supprimé avec succès'
+
+    #[Route('/admin/suppr/{id}', name: 'admin.utilisateur.suppr')]
+    public function suppr(Profil $profil): Response{
+        $this->om->remove($profil);
+        $this->om->flush();
+        $this->addFlash('success',
+            'Le profil a été supprimé avec succès.'
+        );
+        return $this->redirectToRoute('admin.utilisateurs');
     }
 }
