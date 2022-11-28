@@ -58,7 +58,7 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
         }
 
         # Sinon redirection vers la page d'accueil
-        return new RedirectResponse($this->urlGenerator->generate('profil'));
+        return new RedirectResponse($this->urlGenerator->generate('profil', array('id' => 2)));
     }
 
     protected function getLoginUrl(Request $request): string
