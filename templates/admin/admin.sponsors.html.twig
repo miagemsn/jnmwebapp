@@ -1,0 +1,37 @@
+{% extends '_dashboard-admin.html.twig' %}
+
+{% block body %}
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success mt-2 mb-2">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div id="utilisateurs">
+        <h2 class="fs-5">Liste de tous les partenaires :</h2>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Image</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for sponsor in sponsors %}
+                <tr>
+                    <th scope="row">{{ sponsor.id }}</th>
+                    <td>{{ sponsor.img }}</td>
+                    <td>{{ sponsor.nom }}</td>
+                    <td>{{ sponsor.email }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+{% endblock body %}
