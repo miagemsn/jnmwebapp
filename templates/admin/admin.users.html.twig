@@ -1,0 +1,45 @@
+{% extends '_dashboard-admin.html.twig' %}
+
+{% block body %}
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success mt-2 mb-2">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div id="utilisateurs">
+        <h2 class="fs-5">Liste de tous les profils :</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Date de naissance</th>
+                <th scope="col">Status</th>
+                <th scope="col">Miage</th>
+                <th scope="col">Téléphone</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <th scope="row">{{ user.id }}</th>
+                    <td>{{ user.prenom }}</td>
+                    <td>{{ user.nom | upper }}</td>
+                    <td>{{ user.ddn | date('d-m-Y') }}</td>
+                    <td>{{ user.status.libelle }}</td>
+                    <td>{{ user.miage.provenance }}</td>
+                    <td>{{ user.tel }}</td>
+                    <td>{{ user.adr }}</td>
+                    <td><a type="button" href="{{ path('admin.user.delete', {id:user.id}) }}" class="btn btn-outline-danger">Supprimer</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock body %}
