@@ -37,16 +37,12 @@
                   {{ form_row(registrationForm.miage) }}
                 </div>
 
-                {{ form_row(registrationForm.email, { label: 'Adresse email'}) }}
-                {{ form_row(registrationForm.plainPassword, { label: 'Mot de passe'}) }}
-                {{ form_row(registrationForm.agreeTerms, {
-                  label: 'J’accepte que les informations saisies dans le formulaire soient utilisées pour créer mon compte'
-                }) }}
+                {{ form_row(registrationForm.email) }}
+                {{ form_row(registrationForm.password) }}
+                {{ form_row(registrationForm.agreeTerms) }}
 
                 <button class="btn btn-lg btn-block mt-4 text-white" type="submit">S'inscrire</button>
                 {{ form_end(registrationForm) }}
-
-
 
                 <p class="mt-2"><a class="mb-5 pb-lg-2 small text-muted" href="{{ path('app_login') }}" style="color: #393f81;">Déjà inscrit ? Connectez-vous</a></p>
 
