@@ -1,0 +1,79 @@
+<link rel="stylesheet" href="{{ asset('node_modules/bootstrap/dist/css/bootstrap.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/base.css') }}">
+
+<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <img class="img-fluid" src="{{ asset('assets/login-illustration.jpg') }}" alt="login form"/>
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
+
+                <form method="post">
+
+                  {% if error %}
+                    <div class="alert alert-danger mb-3">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                  {% endif %}
+
+                  {% if app.user %}
+                    <div class="mb-3">
+                      You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                    </div>
+                  {% endif %}
+
+                  <div class="mb-3 pb-1">
+                    <img class="logo" src="{{ asset('assets/miage-logo.png') }}" alt="">
+                  </div>
+
+                  <h5 class="fw-normal mb-3 pb-3">Connexion</h5>
+
+                  <div class="form-floating mb-2">
+                    <input type="email" value="{{ last_username }}" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" autocomplete="email" required autofocus>
+                    <label for="floatingInput">Adresse email</label>
+                  </div>
+                  <div class="form-floating mb-4">
+                    <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" autocomplete="current-password" required>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+
+                    {#
+                    Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                    See https://symfony.com/doc/current/security/remember_me.html
+
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" name="_remember_me"> Remember me
+                        </label>
+                    </div>
+                    #}
+
+                    <label for="floatingPassword">Mot de passe</label>
+                  </div>
+
+                  <div class="pt-1 mb-4">
+                    <button class="btn btn-lg btn-block text-white" type="submit">Se connecter</button>
+                  </div>
+
+                  <a class="small text-muted" href="#!">Mot de passe oublié ?</a>
+                  <p class="mt-2"><a class="mb-5 pb-lg-2 small text-muted" href="#!" style="color: #393f81;">Pas encore de compte ?</a></p>
+
+                  <!--
+                  <a href="#!" class="small text-muted">Terms of use.</a>
+                  <a href="#!" class="small text-muted">Privacy policy</a>
+                  -->
+
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

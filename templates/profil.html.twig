@@ -1,0 +1,20 @@
+{% extends '_dashboard-user.html.twig' %}
+
+{% block body %}
+
+  <h5 class="mb-3 pb-3">Modifier mon profil</h5>
+
+  {{ form_start(profilForm) }}
+  {{ form_row(profilForm.nom) }}
+  {{ form_row(profilForm.prenom) }}
+  {{ form_row(profilForm.ddn) }}
+  {{ form_row(profilForm.adr) }}
+  {{ form_row(profilForm.tel) }}
+
+
+  <button class="btn btn-lg btn-block mt-4" type="submit">Modifier</button>
+  {{ form_end(profilForm) }}
+
+
+
+{% endblock body %}
