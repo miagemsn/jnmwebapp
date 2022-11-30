@@ -1,5 +1,5 @@
 section{
-  background-color: #217B8A;
+  background-color: var(--metallic-seaweed);
 }
 .card{
   border-radius: 1rem;

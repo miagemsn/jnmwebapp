@@ -9,3 +9,8 @@
   --verdigris: #55AAA4ff;
   --metallic-seaweed: #217B8Aff;
 }
+
+html * {
+  color: var(--onyx);
+  box-sizing: border-box;
+}
