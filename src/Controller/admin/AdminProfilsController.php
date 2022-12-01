@@ -54,4 +54,11 @@ class AdminProfilsController extends AbstractController
         );
         return $this->redirectToRoute('admin.utilisateurs');
     }
+
+    public function creat()
+    {
+        return $this->render();
+    }
+
 }
+
