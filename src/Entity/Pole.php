@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PoleRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PoleRepository::class)]
@@ -15,6 +17,14 @@ class Pole
 
     #[ORM\Column(length: 255)]
     private ?string $libelle = null;
+
+    #[ORM\OneToMany(mappedBy: 'pole', targetEntity: Contact::class)]
+    private Collection $contacts;
+
+    public function __construct()
+    {
+        $this->contacts = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -41,6 +51,36 @@ class Pole
     public function setLibelle(string $libelle): self
     {
         $this->libelle = $libelle;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Contact>
+     */
+    public function getContacts(): Collection
+    {
+        return $this->contacts;
+    }
+
+    public function addContact(Contact $contact): self
+    {
+        if (!$this->contacts->contains($contact)) {
+            $this->contacts->add($contact);
+            $contact->setPole($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContact(Contact $contact): self
+    {
+        if ($this->contacts->removeElement($contact)) {
+            // set the owning side to null (unless already changed)
+            if ($contact->getPole() === $this) {
+                $contact->setPole(null);
+            }
+        }
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\LogementRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: LogementRepository::class)]
@@ -23,10 +25,21 @@ class Logement
     private ?string $localisation = null;
 
     #[ORM\Column]
-    private ?int $tarif = null;
+    private ?float $tarif = null;
 
     #[ORM\Column]
-    private ?int $tarif_groupe = null;
+    private ?float $tarif_groupe = null;
+
+    #[ORM\OneToMany(mappedBy: 'logement', targetEntity: Reservation::class)]
+    private Collection $reservations;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $img = null;
+
+    public function __construct()
+    {
+        $this->reservations = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -101,6 +114,48 @@ class Logement
     public function setTarifGroupe(int $tarif_groupe): self
     {
         $this->tarif_groupe = $tarif_groupe;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Reservation>
+     */
+    public function getReservations(): Collection
+    {
+        return $this->reservations;
+    }
+
+    public function addReservation(Reservation $reservation): self
+    {
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations->add($reservation);
+            $reservation->setLogement($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservation(Reservation $reservation): self
+    {
+        if ($this->reservations->removeElement($reservation)) {
+            // set the owning side to null (unless already changed)
+            if ($reservation->getLogement() === $this) {
+                $reservation->setLogement(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getImg(): ?string
+    {
+        return $this->img;
+    }
+
+    public function setImg(?string $img): self
+    {
+        $this->img = $img;
 
         return $this;
     }
