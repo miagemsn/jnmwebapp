@@ -4,8 +4,42 @@
 
 {% block body %}
 
-  <div>
+  <div id="transports">
     <h2 class="fs-5">Liste de tous les transports :</h2>
+
+    <a type="button" href="{{ path('admin.transport.add') }}" class="btn btn-outline-primary">Ajouter</a>
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Image</th>
+        <th scope="col">Libelle</th>
+        <th scope="col">Zone</th>
+        <th scope="col">Tarif</th>
+        <th scope="col">Type</th>
+        <th scope="col">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for transport in transports %}
+      <tr>
+        <th scope="row">{{ transport.id }}</th>
+        <td>{{ transport.img }}</td>
+        <td>{{ transport.libelle }}</td>
+        <td>{{ transport.zone }}</td>
+        <td>{{ transport.tarif }}</td>
+        <td>{{ transport.type }}</td>
+        <td class="d-flex">
+          <a type="button" href="{{ path('admin.transport.edit', {id:transport.id}) }}" class="btn btn-outline-dark">Editer</a>
+          <a type="button" href="{{ path('admin.transport.delete', {id:transport.id}) }}" class="btn btn-outline-danger">Supprimer</a>
+        </td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
   </div>
 
 {% endblock body %}
+
+
