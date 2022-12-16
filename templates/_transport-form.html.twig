@@ -1,7 +1,12 @@
 {{ form_start(formTransport) }}
 {{ form_row(formTransport.libelle) }}
-{{ form_row(formTransport.zone) }}
-{{ form_row(formTransport.tarif) }}
-{{ form_row(formTransport.img) }}
 {{ form_row(formTransport.type) }}
+<div class="d-flex justify-content-between">
+  {{ form_row(formTransport.zone) }}
+  {{ form_row(formTransport.tarif) }}
+</div>
+{{ form_row(formTransport.img) }}
+<div class="text-end mt-4">
+  {{ form_row(formTransport.save) }}
+</div>
 {{ form_end(formTransport) }}

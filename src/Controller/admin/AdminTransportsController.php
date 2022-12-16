@@ -57,10 +57,10 @@ class AdminTransportsController extends AbstractController
             $this->addFlash('success',
                 'Le titre de transport a été ajouté avec succès.'
             );
-            return $this->redirectToRoute(self::PAGEADMINTRANSPORTS);
+            return $this->redirectToRoute('admin.transports');
         }
 
-        return $this->render('_transport-form.html.twig', [
+        return $this->render('admin/admin.transport.ajout.html.twig', [
             'transport' => $transport,
             'formTransport' => $formTransport->createView()
         ]);
@@ -85,12 +85,12 @@ class AdminTransportsController extends AbstractController
     }
 
     #[Route('/admin/transport/suppr/{id}', name: 'admin.transport.delete')]
-    public function delete(Transport $transport): Response{
+    public function suppr(Transport $transport): Response{
         $this->om->remove($transport);
         $this->om->flush();
         $this->addFlash('success',
             'Le titre de transport a été supprimée avec succès.'
         );
-        return $this->redirectToRoute(self::PAGEADMINTRANSPORTS);
+        return $this->redirectToRoute('admin.transports');
     }
 }
