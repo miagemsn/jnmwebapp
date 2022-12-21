@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -24,8 +25,14 @@ class TransportType extends AbstractType
             ->add('zone',TextType::class, [
                 'attr' => ['maxlength' => 3]
             ])
+            // TODO MoneyType handle comma period
+            /*
             ->add('tarif', MoneyType::class, [
                 'divisor' => 100,
+            ])
+            */
+            ->add('tarif', NumberType::class, [
+                'label' => 'Tarif',
             ])
             ->add('img', FileType::class, [
                 'label' => 'Image',

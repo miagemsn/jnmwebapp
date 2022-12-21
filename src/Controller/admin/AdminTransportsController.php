@@ -66,6 +66,7 @@ class AdminTransportsController extends AbstractController
         ]);
     }
 
+    // TODO block input zone for tickets
     #[Route('/admin/transport/edit/{id}', name: 'admin.transport.edit')]
     public function edit(Transport $transport, Request $request): Response {
         $formTransport = $this->createForm(TransportType::class, $transport);
@@ -75,10 +76,10 @@ class AdminTransportsController extends AbstractController
             $this->addFlash('success',
                 'Le titre de transport a été modifiée avec succès.'
             );
-            return $this->redirectToRoute(self::PAGEADMINTRANSPORTS);
+            return $this->redirectToRoute('admin.transports');
         }
 
-        return $this->render(self::PAGEADMINTRANSPORTS, [
+        return $this->render('admin/admin.transport.edit.html.twig', [
             'transport' => $transport,
             'formTransport' => $formTransport->createView()
         ]);
