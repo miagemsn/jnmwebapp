@@ -1,0 +1,10 @@
+{{ form_start(formLogement) }}
+{{ form_row(formLogement.nom) }}
+{{ form_row(formLogement.description) }}
+{{ form_row(formLogement.localisation) }}
+<div class="d-flex justify-content-between">
+  {{ form_row(formLogement.tarif) }}
+  {{ form_row(formLogement.tarif_groupe) }}
+</div>
+{{ form_row(formLogement.img) }}
+{{ form_end(formLogement) }}

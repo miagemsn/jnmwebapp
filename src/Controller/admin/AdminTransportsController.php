@@ -14,7 +14,7 @@ use App\Repository\UserRepository;
 
 class AdminTransportsController extends AbstractController
 {
-    private const PAGEADMINTRANSPORTS = "admin/admin.transports.html.twig";
+    private const PAGEADMINTRANSPORTS = "admin/transport/transports.html.twig";
 
     /**
      *
@@ -60,7 +60,7 @@ class AdminTransportsController extends AbstractController
             return $this->redirectToRoute('admin.transports');
         }
 
-        return $this->render('admin/admin.transport.ajout.html.twig', [
+        return $this->render('admin/transport/transport.ajout.html.twig', [
             'transport' => $transport,
             'formTransport' => $formTransport->createView()
         ]);
@@ -79,7 +79,7 @@ class AdminTransportsController extends AbstractController
             return $this->redirectToRoute('admin.transports');
         }
 
-        return $this->render('admin/admin.transport.edit.html.twig', [
+        return $this->render('admin/transport/transport.edit.html.twig', [
             'transport' => $transport,
             'formTransport' => $formTransport->createView()
         ]);
