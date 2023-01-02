@@ -18,7 +18,7 @@ class Logement
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 500)]
     private ?string $description = null;
 
     #[ORM\Column(length: 255)]
@@ -35,6 +35,9 @@ class Logement
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $img = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $link = null;
 
     public function __construct()
     {
@@ -156,6 +159,18 @@ class Logement
     public function setImg(?string $img): self
     {
         $this->img = $img;
+
+        return $this;
+    }
+
+    public function getLink(): ?string
+    {
+        return $this->link;
+    }
+
+    public function setLink(?string $link): self
+    {
+        $this->link = $link;
 
         return $this;
     }
