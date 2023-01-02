@@ -1,0 +1,43 @@
+{% extends '_base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="info">
+          <h1>Journée Nationale des MIAGES</h1>
+          <p>L'université de Nanterre vous accueille</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="info">
+          <h1>Le Pixel</h1>
+          <p>Un lieu ressource documentaire, pédagogique et culturel</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="info">
+          <h1>La Contemporaine</h1>
+          <p>Une référence pour la recherche en sciences humaines et sociales</p>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only"></span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only"></span>
+    </a>
+  </div>
+
+{% endblock %}
