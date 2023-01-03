@@ -124,11 +124,3 @@ html * {
   font-size: 1.2em;
   font-weight: 500;
 }
-
-.maintxt {
-  position: relative;
-}
-.maintxt > img, .overlay-text {
-  position: absolute;
-}
-.overlay-text {padding: 150px 50px;}

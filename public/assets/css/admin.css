@@ -14,6 +14,7 @@ body {
 }
 .navbar{
   background-color: var(--alice-blue);
+  position: static;
 }
 
 .content {
