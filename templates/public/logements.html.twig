@@ -1,0 +1,24 @@
+{% extends '_base.html.twig' %}
+
+{% block title %}Logements{% endblock %}
+
+{% block body %}
+
+  <img src="{{ asset('assets/white.jpeg') }}" alt="">
+
+  <div class="row row-cols-1 row-cols-md-3">
+    {% for logement in logements %}
+    <div class="col mb-4">
+      <div class="card">
+        <a href="{{ logement.link }}">
+          <img src="{{ asset('assets/logement1.jpg') }}" class="card-img-top" alt="{{ logement.img }}"></a>
+        <div class="card-body">
+          <h5 class="card-title">{{ logement.nom }}</h5>
+          <p class="card-text">{{ logement.description }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+{% endblock %}

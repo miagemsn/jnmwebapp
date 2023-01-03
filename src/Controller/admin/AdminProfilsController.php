@@ -35,7 +35,7 @@ class AdminProfilsController extends AbstractController
     public function index(): Response
     {
         $users = $this->repository->findAll();
-        return $this->render('admin/admin.users.html.twig', [
+        return $this->render('admin/user/users.html.twig', [
             'users' => $users,
         ]);
     }
@@ -52,4 +52,6 @@ class AdminProfilsController extends AbstractController
         );
         return $this->redirectToRoute('admin.users');
     }
+
+
 }

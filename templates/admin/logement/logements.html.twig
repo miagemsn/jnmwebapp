@@ -1,0 +1,52 @@
+{% extends '_dashboard-admin.html.twig' %}
+
+{% block title %}Logements{% endblock %}
+
+{% block body %}
+
+  {% for message in app.flashes('success') %}
+    <div class="alert alert-success mt-2 mb-4">
+      {{ message }}
+    </div>
+  {% endfor %}
+
+  <div id="logements">
+    <h2 class="fs-5">Liste de tous les logements :</h2>
+
+    <a type="button" href="{{ path('admin.logement.add') }}" class="btn btn-outline-primary">Ajouter</a>
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Image</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Description</th>
+        <th scope="col">Localisation</th>
+        <th scope="col">Tarif</th>
+        <th scope="col">Tarif de groupe</th>
+        <th scope="col">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for logement in logements %}
+        <tr>
+          <th scope="row">{{ logement.id }}</th>
+          <td>{{ logement.img }}</td>
+          <td>{{ logement.nom }}</td>
+          <td>{{ logement.description }}</td>
+          <td>{{ logement.localisation }}</td>
+          <td>{{ logement.tarif }}</td>
+          <td>{{ logement.tarifGroupe }}</td>
+
+          <td class="d-flex">
+            <a type="button" href="{{ path('admin.logement.edit', {id:logement.id}) }}" class="btn btn-outline-dark">Editer</a>
+            <a type="button" href="{{ path('admin.logement.delete', {id:logement.id}) }}" class="btn btn-outline-danger">Supprimer</a>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+{% endblock body %}

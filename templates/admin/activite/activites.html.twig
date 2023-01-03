@@ -1,0 +1,48 @@
+{% extends '_dashboard-admin.html.twig' %}
+
+{% block title %}Activités{% endblock %}
+
+{% block body %}
+
+  {% for message in app.flashes('success') %}
+    <div class="alert alert-success mt-2 mb-2">
+      {{ message }}
+    </div>
+  {% endfor %}
+
+  <div id="utilisateurs">
+    <h2 class="fs-5">Liste de toutes les activités :</h2>
+
+    <a type="button" href="{{ path('admin.activite.add') }}" class="btn btn-outline-primary">Ajouter</a>
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Image</th>
+        <th scope="col">Libellé</th>
+        <th scope="col">Tarif</th>
+        <th scope="col">Date</th>
+        <th scope="col">Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for activite in activites %}
+        <tr>
+          <th scope="row">{{ activite.id }}</th>
+          <td>{{ activite.img }}</td>
+          <td>{{ activite.libelle }}</td>
+          <td>{{ activite.tarif }}</td>
+          <td>{{ activite.date | date('d-m-Y') }}</td>
+          <td class="d-flex">
+            <a type="button" href="{{ path('admin.activite.edit', {id:activite.id}) }}" class="btn btn-outline-dark">Editer</a>
+            <a type="button" href="{{ path('admin.activite.delete', {id:activite.id}) }}) }}" class="btn btn-outline-danger">Supprimer</a>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+  </div>
+
+{% endblock body %}

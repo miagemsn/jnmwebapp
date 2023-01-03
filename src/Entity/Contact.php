@@ -13,6 +13,14 @@ class Contact
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\ManyToOne(inversedBy: 'contacts')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Miage $miage = null;
+
+    #[ORM\ManyToOne(inversedBy: 'contacts')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Pole $pole = null;
+
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
@@ -30,14 +38,26 @@ class Contact
         return $this->id;
     }
 
-    public function getContactId(): ?int
+    public function getMiage(): ?Miage
     {
-        return $this->contact_id;
+        return $this->miage;
     }
 
-    public function setContactId(int $contact_id): self
+    public function setMiage(?Miage $miage): self
     {
-        $this->contact_id = $contact_id;
+        $this->miage = $miage;
+
+        return $this;
+    }
+
+    public function getPole(): ?Pole
+    {
+        return $this->pole;
+    }
+
+    public function setPole(?Pole $pole): self
+    {
+        $this->pole = $pole;
 
         return $this;
     }

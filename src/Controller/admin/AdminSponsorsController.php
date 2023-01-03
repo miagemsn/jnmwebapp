@@ -36,7 +36,7 @@ class AdminSponsorsController extends AbstractController
     public function index(): Response
     {
         $sponsors = $this->repository->findAll();
-        return $this->render('admin/admin.sponsors.html.twig', [
+        return $this->render('admin/sponsor/sponsors.html.twig', [
             'sponsors' => $sponsors,
         ]);
     }
